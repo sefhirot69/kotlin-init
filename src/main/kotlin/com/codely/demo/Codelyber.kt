@@ -2,7 +2,6 @@ package com.codely.demo
 
 import java.time.LocalDate
 import java.time.Period
-import kotlin.system.exitProcess
 
 fun main() {
     println("Please enter a date with the format <yyyy-MM-dd>")
@@ -16,7 +15,6 @@ fun main() {
         with(Period.between(input, LocalDate.now())) {
             println("The difference between the date you wrote and today is ${this.years}")
         }
-
     }
 }
 
