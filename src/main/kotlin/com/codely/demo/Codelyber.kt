@@ -19,7 +19,11 @@ fun main() {
         println("You wrote $it")
     }.run {
         with(Period.between(this, LocalDate.now())) {
-            println("The difference between the date you wrote and today is ${this.years}")
+            when {
+                years > 0 -> println("The difference between the date you wrote and today is $years years")
+                months > 0 -> println("The difference between the date you wrote and today is $months months")
+                days > 0 -> println("The difference between the date you wrote and today is $days days")
+            }
         }
     }
 
