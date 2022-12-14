@@ -11,22 +11,24 @@ fun main() {
     }?.let {
         LocalDate.parse(it)
     }.apply {
-        if ( null == this) {
-           println("The date is not valid");
-           exitProcess(1);
+        if (null == this) {
+            println("The date is not valid");
+            exitProcess(1);
         }
     }?.also {
         println("You wrote $it")
-    }.run {
-        with(Period.between(this, LocalDate.now())) {
-            when {
-                years > 0 -> println("The difference between the date you wrote and today is $years years")
-                months > 0 -> println("The difference between the date you wrote and today is $months months")
-                days > 0 -> println("The difference between the date you wrote and today is $days days")
-            }
-        }
+    }?.run {
+        calculateDifference()
     }
 
 }
 
 fun supportNullableString(line: String?) = line
+
+private fun LocalDate.calculateDifference() = with(Period.between(this, LocalDate.now())) {
+    when {
+        years > 0 -> println("The difference between the date you wrote and today is $years years")
+        months > 0 -> println("The difference between the date you wrote and today is $months months")
+        days > 0 -> println("The difference between the date you wrote and today is $days days")
+    }
+}
