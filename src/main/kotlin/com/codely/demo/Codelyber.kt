@@ -12,15 +12,14 @@ fun main() {
         LocalDate.parse(it)
     }.apply {
         if (null == this) {
-            println("The date is not valid");
-            exitProcess(1);
+            println("The date is not valid")
+            exitProcess(1)
         }
     }?.also {
         println("You wrote $it")
     }?.run {
         calculateDifference()
     }
-
 }
 
 fun supportNullableString(line: String?) = line
